@@ -6,13 +6,13 @@
 # See: https://github.com/github/gitignore/tree/main/Global
 #
 .utmp/
-/[Ll]ibrary/
-/[Tt]emp/
-/[Oo]bj/
-/[Bb]uild/
-/[Bb]uilds/
-/[Ll]ogs/
-/[Uu]ser[Ss]ettings/
+project_3/[Ll]ibrary/
+project_3/[Tt]emp/
+project_3/[Oo]bj/
+project_3/[Bb]uild/
+project_3/[Bb]uilds/
+project_3/[Ll]ogs/
+project_3/[Uu]ser[Ss]ettings/
 *.log
 
 # By default unity supports Blender asset imports, *.blend1 blender files do not need to be commited to version control.
