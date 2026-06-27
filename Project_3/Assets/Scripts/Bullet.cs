@@ -19,4 +19,22 @@ public class Bullet : MonoBehaviour
     {
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
     }
+
+    // Set a collider trigger for the bullet
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Bandit"))
+        {
+            // Get bandit
+            BanditScript bandit = other.GetComponent<BanditScript>();
+
+            if (bandit != null)
+            {
+                bandit.Die();
+            }
+
+            // Destory the bullet after it hits bandit
+            Destroy(gameObject);
+        }
+    }
 }
