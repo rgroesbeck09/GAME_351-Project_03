@@ -6,6 +6,10 @@ public class PlayerController : MonoBehaviour
 {
     public float impulseForce  = 170000.0f;
     public float impulseTorque = 3000.0f;
+    public float kickForce = 40f; 
+    public float kickRange = 2f;
+    public int randomKick;
+    public kickTrigger kickTrigger;
 
     public GameObject hero;
 
@@ -24,6 +28,15 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+        // kick only when player is standing upright or moving
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            // kick animation
+            Kick();    
+        }
+        
+
         // W/A/S/D input as a combined rotation and movement vector
         Vector3 input = new Vector3(0, Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
@@ -36,6 +49,8 @@ public class PlayerController : MonoBehaviour
             rigidBody.AddRelativeForce(new Vector3(0, 0, input.z * impulseForce * Time.deltaTime));
 
             animController.SetBool("Walk", true);
+
+           
         }
         else
         {
@@ -50,4 +65,33 @@ public class PlayerController : MonoBehaviour
 
 
     }
+
+    // kick function, selects at random one of 3 kick animations
+    void Kick()
+    {
+        // get random number from 1 to 3 for random kick 
+        int randomKick = UnityEngine.Random.Range(1, 4);
+
+        // select random kick based on randomKick 
+        animController.SetInteger("kickType", randomKick);
+        animController.SetTrigger("kick");
+
+        applyKickForce();
+    }
+    
+    // applies kick force when kicking objects
+    public void applyKickForce()
+    {
+        if(kickTrigger.currentObject == null)
+        {
+            return;
+        }
+
+        kickTrigger.currentObject.AddForce(
+            transform.forward * kickForce,
+            ForceMode.Impulse);
+
+        //Debug.Log("Kicked " + kickTrigger.currentObject.name);
+    }
+        
 }
