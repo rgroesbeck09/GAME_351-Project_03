@@ -19,19 +19,14 @@ public class BarrelScript : MonoBehaviour
         
     }
 
-    // look for the collision
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Bullet"))
-        {
-            explode();
-            Destroy(collision.gameObject);
-        }
+        Debug.Log("Collision hit: " + collision.gameObject.name);
     }
 
 
     // Create Explosion launch
-    void explode()
+    public void explode()
     {
         // create an instance of the explosion
         ParticleSystem explosion = Instantiate(

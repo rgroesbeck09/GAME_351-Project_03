@@ -5,8 +5,12 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     // Public variables
-    public float speed = 25f;
-    public float lifetime = 3f;
+    public float speed = 50f;
+    public float lifetime = 5f;
+
+    // Private Variables
+    private Rigidbody rb;
+
     
     // Start is called before the first frame update
     void Start()
@@ -32,9 +36,20 @@ public class Bullet : MonoBehaviour
             {
                 bandit.Die();
             }
-
-            // Destory the bullet after it hits bandit
-            Destroy(gameObject);
         }
+        
+        if(other.CompareTag("Kickable"))
+        {
+            // get barrel
+            BarrelScript barrel = other.GetComponent<BarrelScript>();
+
+            if (barrel != null)
+            {
+                barrel.explode();
+            }    
+        }
+
+        // Destory the bullet after it hits bandit
+        Destroy(gameObject);
     }
 }

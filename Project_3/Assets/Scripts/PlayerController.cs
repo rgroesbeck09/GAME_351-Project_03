@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.F) && Time.time >= nextShot)
         {
-            Debug.Log("Shot Fired!");
+            // Shoots the bullet
             shoot();
 
             // prevent next shot until cooldown happens
@@ -102,8 +102,6 @@ public class PlayerController : MonoBehaviour
         kickTrigger.currentObject.AddForce(
             transform.forward * kickForce,
             ForceMode.Impulse);
-
-        //Debug.Log("Kicked " + kickTrigger.currentObject.name);
     }
 
     // Shoot the bullets
