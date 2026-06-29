@@ -11,7 +11,7 @@ public class kickTrigger : MonoBehaviour
         if(other.attachedRigidbody != null)
         {
             currentObject = other.attachedRigidbody;
-            Debug.Log("Entered " + currentObject.name);
+            //Debug.Log("Entered " + currentObject.name);
         }
     }
 
@@ -19,7 +19,7 @@ public class kickTrigger : MonoBehaviour
     {
         if(other.attachedRigidbody == currentObject)
         {
-            Debug.Log("Exited: " + currentObject.name);
+            //Debug.Log("Exited: " + currentObject.name);
             currentObject = null;
         }
     }
