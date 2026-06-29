@@ -8,9 +8,6 @@ public class Bullet : MonoBehaviour
     public float speed = 50f;
     public float lifetime = 5f;
 
-    // Private Variables
-    private Rigidbody rb;
-
     
     // Start is called before the first frame update
     void Start()

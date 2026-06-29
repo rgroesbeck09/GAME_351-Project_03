@@ -24305,17 +24305,17 @@ PrefabInstance:
     - target: {fileID: 5925975876303025056, guid: 81c06a7880356b747ae98e355efba00a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -18.66
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5925975876303025056, guid: 81c06a7880356b747ae98e355efba00a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5353529
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5925975876303025056, guid: 81c06a7880356b747ae98e355efba00a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.24
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5925975876303025056, guid: 81c06a7880356b747ae98e355efba00a,
         type: 3}
@@ -36820,7 +36820,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rain: {fileID: 1624637855}
   player: {fileID: 846697784}
-  rainRate: 20000
+  rainRate: 100
   lightningLight: {fileID: 476682645}
   thunderAudio: {fileID: 983074478}
   windAudio: {fileID: 1761548723}
@@ -42745,17 +42745,17 @@ PrefabInstance:
     - target: {fileID: 5925975876303025056, guid: 81c06a7880356b747ae98e355efba00a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -18.719482
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5925975876303025056, guid: 81c06a7880356b747ae98e355efba00a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.54853857
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5925975876303025056, guid: 81c06a7880356b747ae98e355efba00a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.3426816
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5925975876303025056, guid: 81c06a7880356b747ae98e355efba00a,
         type: 3}

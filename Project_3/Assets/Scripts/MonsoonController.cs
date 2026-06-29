@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MonsoonController : MonoBehaviour
 {
+    // public variables
     public ParticleSystem rain;
 
     public Transform player;
@@ -19,9 +20,15 @@ public class MonsoonController : MonoBehaviour
     public float maxLightningTime = 15f;
     public GameObject lightningBolt;
 
+    // private variables
+    private float monsoonTracker;
+    private bool monsoonOn = false;
+
     void Start()
     {
-        // start lightning
+        monsoonTracker = Random.Range(60f, 300f);
+
+        /* start lightning
         StartCoroutine(LightningRoutine());
 
         // start wind audio
@@ -31,14 +38,55 @@ public class MonsoonController : MonoBehaviour
         var emission = rain.emission;
         emission.rateOverTime = rainRate;
         // start rain audio
-        rainAudio.Play();
+        rainAudio.Play();*/
     }
 
     // Update is called once per frame
     void Update()
     {
-        //var emission = rain.emission;
-        //emission.rateOverTime = rainRate;
+
+        if (Time.time > monsoonTracker)
+        {
+            Debug.Log("I made it here" + monsoonOn);
+            if (!monsoonOn)
+            {
+                Debug.Log("I made the rain");
+
+                // start lightning
+                StartCoroutine(LightningRoutine());
+
+                // start wind audio
+                windAudio.Play();
+
+                // start rain
+                var emission = rain.emission;
+                emission.rateOverTime = rainRate;
+
+                // start rain audio
+                rainAudio.Play();
+
+                // set monsoon tracker
+                monsoonTracker = Random.Range(60f, 300f);
+            }
+            else
+            {
+                Debug.Log("I stopped the rain");
+
+                StopCoroutine(LightningRoutine());
+
+                windAudio.Stop();
+
+                // start rain
+                var emission = rain.emission;
+                emission.rateOverTime = 0;
+                
+                // start rain audio
+                rainAudio.Play();
+
+                // set monsoon tracker
+                monsoonTracker = Random.Range(60f, 300f);
+            }
+        }
         
     }
 
