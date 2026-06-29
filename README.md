@@ -16,3 +16,5 @@ bolt texture was created in paint3D and imported. The scene lighting was dimmed 
 handles the timed audio and light flashes for thunder, lightning bolt, and lightning flash. On Start(), the wind and rain audios 
 are started as well as the rain particle system. 
 
+Dynamic Soundtrack: Amanda Bragg
+Implemented an audio system that pulls from concepts about singletons, managers, spatial audio, and events. I created a singleton called AudioManager that controls the music tracks (default, suspense, and fight), and makes sure that only one track plays at a time. I also added a SupplyStoreMusicTrigger that uses a trigger event to transition the music when the player enters/exits the Supply Store. Then implemented PlayerShootingAudio which handles gunshot noise and also starts the fight music when combat begins. Also added FootstepAudio to play positional footstep noises. BanditAudio manages bandit taunts, pain/death sounds, and randomly timed intervals. The foley effects were 3D positional audio and the music tracks were looping 2D. All audio files used from the given project template. 
