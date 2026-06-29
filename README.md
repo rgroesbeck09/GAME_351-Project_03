@@ -1,4 +1,7 @@
 # GAME_351-Project_03
+Cutscene Cameras: Valeria Ugarte De La Torre
+Added three different vcams of different perspectives in map. First starts at the church bell and second dolly camera 
+moves downwards towards the town in a cinematic way, while finishing at the player camera and enabling player movement. 
 
 Player Can Kick: Christopher Garcia-Arvizu
 Added 3 separate kicking animations to the player, chosen at random, when close enough to movable objects such as wooden
