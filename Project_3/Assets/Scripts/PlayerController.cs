@@ -88,8 +88,7 @@ public class PlayerController : MonoBehaviour
         animController.SetInteger("kickType", randomKick);
         animController.SetTrigger("kick");
 
-        // small delay for object to move after kicking animation starts
-        Invoke("applyKickForce", .25f);
+        applyKickForce();
     }
     
     // applies kick force when kicking objects
