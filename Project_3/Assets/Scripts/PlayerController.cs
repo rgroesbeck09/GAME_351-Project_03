@@ -4,14 +4,20 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    // Public Variables
+    public GameObject bullet;
+    public Transform shootPoint;
     public float impulseForce  = 170000.0f;
     public float impulseTorque = 3000.0f;
     public float kickForce = 40f; 
     public float kickRange = 2f;
     public int randomKick;
     public kickTrigger kickTrigger;
-
     public GameObject hero;
+    public float shootDelay = 1f;
+
+    // Private Variables
+    private float nextShot = 0f;
 
     Animator animController;
     Rigidbody rigidBody;
@@ -27,13 +33,21 @@ public class PlayerController : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        
+    {        
         // kick only when player is standing upright or moving
         if(Input.GetKeyDown(KeyCode.Space))
         {
             // kick animation
             Kick();    
+        }
+
+        if (Input.GetKeyDown(KeyCode.F) && Time.time >= nextShot)
+        {
+            // Shoots the bullet
+            shoot();
+
+            // prevent next shot until cooldown happens
+            nextShot = Time.time + shootDelay;
         }
         
 
@@ -49,8 +63,6 @@ public class PlayerController : MonoBehaviour
             rigidBody.AddRelativeForce(new Vector3(0, 0, input.z * impulseForce * Time.deltaTime));
 
             animController.SetBool("Walk", true);
-
-           
         }
         else
         {
@@ -90,8 +102,15 @@ public class PlayerController : MonoBehaviour
         kickTrigger.currentObject.AddForce(
             transform.forward * kickForce,
             ForceMode.Impulse);
-
-        //Debug.Log("Kicked " + kickTrigger.currentObject.name);
     }
-        
+
+    // Shoot the bullets
+    public void shoot()
+    {
+        Instantiate(
+             bullet,
+             shootPoint.position,
+             shootPoint.rotation
+        );
+    }
 }

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class BarrelScript : MonoBehaviour
 {
+    // get the debris game object
+    public GameObject debris;
+
     // Serialize for making it a prefab
     [SerializeField] private ParticleSystem explosionTime;
 
@@ -19,19 +22,14 @@ public class BarrelScript : MonoBehaviour
         
     }
 
-    // look for the collision
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Bullet"))
-        {
-            explode();
-            Destroy(collision.gameObject);
-        }
+        Debug.Log("Collision hit: " + collision.gameObject.name);
     }
 
 
     // Create Explosion launch
-    void explode()
+    public void explode()
     {
         // create an instance of the explosion
         ParticleSystem explosion = Instantiate(
@@ -47,6 +45,7 @@ public class BarrelScript : MonoBehaviour
             explosion.main.duration + explosion.main.startLifetime.constantMax);
 
         // remove the barrel after its destruction
-        Destroy(gameObject);
+        gameObject.SetActive(false);
+        debris.SetActive(true);
     }
 }
