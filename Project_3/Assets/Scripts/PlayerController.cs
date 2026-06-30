@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public kickTrigger kickTrigger;
     public GameObject hero;
     public float shootDelay = 1f;
+    public bool canMove = false;
 
     // Private Variables
     private float nextShot = 0f;
@@ -33,7 +34,10 @@ public class PlayerController : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {        
+    {   
+	// Don't allow player input until cutscene is over
+	if (!canMove)
+            return;     
         // kick only when player is standing upright or moving
         if(Input.GetKeyDown(KeyCode.Space))
         {
