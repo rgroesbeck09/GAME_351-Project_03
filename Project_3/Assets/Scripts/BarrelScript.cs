@@ -6,7 +6,8 @@ public class BarrelScript : MonoBehaviour
 {
     // get the debris game object
     public GameObject debris;
-    public AudioSource boomSound; 
+    public AudioSource boomSound;
+    public BanditAudio banditSound;
 
     // Serialize for making it a prefab
     [SerializeField] private ParticleSystem explosionTime;
