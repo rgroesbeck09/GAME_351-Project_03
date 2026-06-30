@@ -6,7 +6,8 @@ public enum MusicState
 {
     Default,
     Suspense,
-    Fight
+    Fight, 
+    Supply
 }
 
 public class AudioManager: MonoBehaviour
@@ -17,6 +18,7 @@ public class AudioManager: MonoBehaviour
     public AudioSource deafulttrack;
     public AudioSource suspensetrack;
     public AudioSource fighttrack;
+    public AudioSource supplyStoreTrack;
 
     [Header("Fade Settings")]
     public float fadeTime = 1.5f;
@@ -32,16 +34,17 @@ public class AudioManager: MonoBehaviour
             Debug.LogError("Duplicate AudioManager", gameObject);
     }
 
-    // Start is called before the first frame update
+    // Start is called before the first frame update 
     private void Start()
     {
         currentState = MusicState.Default;
-        deafulttrack.volume = 1f;
+        deafulttrack.volume = .5f;
         deafulttrack.Play();
     }
 
     public void PlayMusic(MusicState newState)
     {
+        //Debug.Log("PlayMusic called with: " + newState);
         if(newState == currentState)
             return;
         currentState = newState;
@@ -49,11 +52,11 @@ public class AudioManager: MonoBehaviour
             StopCoroutine(fadeRoutine);
         fadeRoutine = StartCoroutine(FadeToTrack(newState));
     }
-
-    private IEnumerator FadeToTrack(MusicState newState)
+    
+    private IEnumerator FadeToTrack(MusicState newState) 
     {
         AudioSource target = GetSource(newState);
-        AudioSource[] allSources = {deafulttrack, suspensetrack, fighttrack};
+        AudioSource[] allSources = {deafulttrack, suspensetrack, fighttrack, supplyStoreTrack};
 
         foreach (AudioSource source in allSources)
         {
@@ -71,7 +74,7 @@ public class AudioManager: MonoBehaviour
             target.volume = Mathf.Lerp(0f, 1f, timer/fadeTime);
             yield return null;
         }
-        target.volume = 1f;
+        target.volume = .5f;
     }
 
     private IEnumerator FadeOut(AudioSource source)
@@ -85,7 +88,7 @@ public class AudioManager: MonoBehaviour
             yield return null;
         }
         source.Stop();
-        source.volume = 1f;
+        source.volume = .5f;
     }
 
     private AudioSource GetSource(MusicState state)
@@ -96,6 +99,8 @@ public class AudioManager: MonoBehaviour
                 return suspensetrack;
             case MusicState.Fight:
                 return fighttrack;
+            case MusicState.Supply:
+                return supplyStoreTrack;
             default:
                 return deafulttrack;
         }

@@ -15,6 +15,9 @@ public class PlayerController : MonoBehaviour
     public kickTrigger kickTrigger;
     public GameObject hero;
     public float shootDelay = 1f;
+    private float lastShotTime;
+    public float fightAudioDuration = 10f;
+    private bool inFightMusic = false;
 
     // Private Variables
     private float nextShot = 0f;
@@ -45,11 +48,16 @@ public class PlayerController : MonoBehaviour
         {
             // Shoots the bullet
             shoot();
-
             // prevent next shot until cooldown happens
             nextShot = Time.time + shootDelay;
         }
-        
+        // check every frame for condition to switch back to default audio
+        if(inFightMusic && Time.time - lastShotTime >= fightAudioDuration)
+            {
+                //Debug.Log("default");
+                AudioManager.instance.PlayMusic(MusicState.Default);
+                inFightMusic = false;
+            }
 
         // W/A/S/D input as a combined rotation and movement vector
         Vector3 input = new Vector3(0, Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
@@ -112,5 +120,16 @@ public class PlayerController : MonoBehaviour
              shootPoint.position,
              shootPoint.rotation
         );
+        // starts counter for time after shot, to be used for turning off fight music
+        lastShotTime = Time.time;   
+
+        // check if fight audio is playing
+        if(!inFightMusic)
+        {
+            // Play fight audio
+            AudioManager.instance.PlayMusic(MusicState.Fight);
+            inFightMusic = true;
+        }
+        
     }
 }
