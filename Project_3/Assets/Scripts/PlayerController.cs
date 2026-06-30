@@ -41,10 +41,9 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         bool isMoving = Input.anyKey;
-
-    {   
+  
 	// Don't allow player input until cutscene is over
-	if (!canMove)
+	    if (!canMove)
             return;     
         // kick only when player is standing upright or moving
         if (Input.GetKeyDown(KeyCode.Space))
@@ -106,7 +105,8 @@ public class PlayerController : MonoBehaviour
                 animController.SetBool("Crouch", false);
         }
 
-    }
+    }   
+
 
     // kick function, selects at random one of 3 kick animations
     void Kick()

@@ -1,17 +1,21 @@
 using UnityEngine;
 using UnityEngine.Playables;
 
+
 public class CutsceneManager : MonoBehaviour
 {
     public PlayableDirector director;
     public PlayerController playerController;
 
+
     private bool cutsceneEnded = false;
+
 
     void Start()
     {  
         director.stopped += OnCutsceneFinished;
     }
+
 
     void Update()
     {
@@ -21,11 +25,14 @@ public class CutsceneManager : MonoBehaviour
         }
     }
 
+
     public void startCutscene()
     {
         playerController.canMove = false;
         director.Play();
     }
+
+
 
 
     public void OnCutsceneFinished(PlayableDirector pd)
