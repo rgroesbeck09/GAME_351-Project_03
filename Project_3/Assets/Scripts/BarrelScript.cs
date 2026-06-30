@@ -6,6 +6,7 @@ public class BarrelScript : MonoBehaviour
 {
     // get the debris game object
     public GameObject debris;
+    public AudioSource boomSound; 
 
     // Serialize for making it a prefab
     [SerializeField] private ParticleSystem explosionTime;
@@ -39,6 +40,8 @@ public class BarrelScript : MonoBehaviour
             );
 
         explosion.Play();
+
+        boomSound.Play();
 
         // remove explosion once done
         Destroy(explosion.gameObject, 
