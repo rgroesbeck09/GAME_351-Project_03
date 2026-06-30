@@ -4,22 +4,24 @@ using UnityEngine;
 
 public class kickTrigger : MonoBehaviour
 {
-    public Rigidbody currentObject;
+    public Rigidbody currentObject = null;
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.attachedRigidbody != null)
+
+        if (other.attachedRigidbody != null)
         {
             currentObject = other.attachedRigidbody;
-            Debug.Log("Entered " + currentObject.name);
+            //Debug.Log("Entered " + currentObject.name);
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if(other.attachedRigidbody == currentObject)
+
+        if (other.attachedRigidbody == currentObject)
         {
-            Debug.Log("Exited: " + currentObject.name);
+            //Debug.Log("Exited: " + currentObject.name);
             currentObject = null;
         }
     }

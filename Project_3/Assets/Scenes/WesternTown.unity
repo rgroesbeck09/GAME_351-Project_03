@@ -1996,6 +1996,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 76542984}
+  - component: {fileID: 76542985}
   m_Layer: 0
   m_Name: Environment
   m_TagString: Untagged
@@ -2023,6 +2024,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &76542985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 76542983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 360868f2ff2c151459972930a74a25cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weather: {fileID: 1243115613}
+  lighting: {fileID: 1862171856}
 --- !u!1001 &77432691
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6334,6 +6349,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Barrel_Broken_02
       objectReference: {fileID: 0}
+    - target: {fileID: 1056188262598134, guid: 6c46190a04ac36045bab57473e2bb033, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4232341416784002, guid: 6c46190a04ac36045bab57473e2bb033, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -6710,6 +6729,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21153c96c6cb37f4799c5b15e37139cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speedX: 0.1
+  speedY: 0.01
 --- !u!64 &257910403
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9394,6 +9415,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21153c96c6cb37f4799c5b15e37139cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speedX: 0.1
+  speedY: 0.01
 --- !u!64 &342925327
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -23856,6 +23879,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21153c96c6cb37f4799c5b15e37139cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speedX: 0.1
+  speedY: 0.01
 --- !u!64 &858619249
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -32531,6 +32556,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Barrel_Broken_03
       objectReference: {fileID: 0}
+    - target: {fileID: 1056188262598134, guid: 6c46190a04ac36045bab57473e2bb033, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4232341416784002, guid: 6c46190a04ac36045bab57473e2bb033, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -36626,6 +36655,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1243115615}
+  - component: {fileID: 1243115616}
   m_Layer: 0
   m_Name: MonsoonManager
   m_TagString: Untagged
@@ -36657,6 +36687,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1243115616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243115613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 057b368f5e4fbb949ac22692bfc70586, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rain: {fileID: 1624637855}
+  player: {fileID: 1457821293}
+  rainRate: 1000
+  lightningLight: {fileID: 476682645}
+  thunderAudio: {fileID: 983074478}
+  windAudio: {fileID: 1761548723}
+  rainAudio: {fileID: 1116566976}
+  minLightningTime: 0
+  maxLightningTime: 10
+  lightningBolt: {fileID: 1357633383}
 --- !u!1 &1243750689
 GameObject:
   m_ObjectHideFlags: 0
@@ -38061,7 +38113,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1282787324}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.57, y: 0.1, z: 3.08}
+  m_LocalPosition: {x: 4.57, y: 0.5, z: 3.08}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -38080,7 +38132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 826f38c10ad4f694a903b486fda6b115, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentObject: {fileID: 0}
+  currentObject: {fileID: 1457821295}
 --- !u!135 &1282787327
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -47844,7 +47896,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ea47ff68e159a224bbcfee34d944aade, type: 2}
+  - {fileID: 2100000, guid: 67a9ceee98716744694c170d9a2b5f58, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -48147,7 +48199,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.15
+      scalar: 0.5
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -58263,6 +58315,10 @@ PrefabInstance:
     - target: {fileID: 1056188262598134, guid: 6c46190a04ac36045bab57473e2bb033, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Barrel_Broken_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1056188262598134, guid: 6c46190a04ac36045bab57473e2bb033, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4232341416784002, guid: 6c46190a04ac36045bab57473e2bb033, type: 3}
       propertyPath: m_RootOrder
