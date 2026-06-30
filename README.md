@@ -20,4 +20,16 @@ handles the timed audio and light flashes for thunder, lightning bolt, and light
 are started as well as the rain particle system. 
 
 Dynamic Soundtrack: Amanda Bragg
-Implemented an audio system that pulls from concepts about singletons, managers, spatial audio, and events. I created a singleton called AudioManager that controls the music tracks (default, suspense, and fight), and makes sure that only one track plays at a time. I also added a SupplyStoreMusicTrigger that uses a trigger event to transition the music when the player enters/exits the Supply Store. Then implemented PlayerShootingAudio which handles gunshot noise and also starts the fight music when combat begins. Also added FootstepAudio to play positional footstep noises. BanditAudio manages bandit taunts, pain/death sounds, and randomly timed intervals. The foley effects were 3D positional audio and the music tracks were looping 2D. All audio files used from the given project template. 
+Implemented an audio system that pulls from concepts about singletons, managers, spatial audio, and events. I created a singleton 
+called AudioManager that controls the music tracks (default, suspense, and fight), and makes sure that only one track plays at a time. 
+I also added a SupplyStoreMusicTrigger that uses a trigger event to transition the music when the player enters/exits the Supply Store. 
+Then implemented PlayerShootingAudio which handles gunshot noise and also starts the fight music when combat begins. Also added 
+FootstepAudio to play positional footstep noises. BanditAudio manages bandit taunts, pain/death sounds, and randomly timed intervals. 
+The foley effects were 3D positional audio and the music tracks were looping 2D. All audio files used from the given project template. 
+
+Shooting Games: Raymond Groesbeck
+First step was to create a bullet that would trigger all the events that we would be doing in this project. After that I would need 
+to modify the bandits animation chart to have the bandits die animation work. From here I would need to make a collider and script 
+for the bandits. The script will detect when a bullet crosses the plane of the collider and that will trigger the death of the bandit.
+Now onto the barrels, this was another thing that would need a modifcation to the collider. Similar to how I implemented the death of the
+bandits we have the bullet trigger the explosion and leave behind some debris. 
