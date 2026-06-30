@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
     private float lastShotTime;
     public float fightAudioDuration = 10f;
     private bool inFightMusic = false;
+    public AudioSource walkingSoound;
+    public AudioSource gunshot;
 
     // Private Variables
     private float nextShot = 0f;
@@ -36,9 +38,11 @@ public class PlayerController : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {        
+    {
+        bool isMoving = Input.anyKey;
+
         // kick only when player is standing upright or moving
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             // kick animation
             Kick();    
@@ -60,7 +64,21 @@ public class PlayerController : MonoBehaviour
             }
 
         // W/A/S/D input as a combined rotation and movement vector
+        
+
+        // W/A/S/D input as a combined rotation and movement vector and make noise
         Vector3 input = new Vector3(0, Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        
+        if (isMoving && (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0))
+        {
+            if (!walkingSoound.isPlaying)
+                walkingSoound.Play();
+        }
+        else
+        {
+            if (walkingSoound.isPlaying)
+                walkingSoound.Stop();
+        }
 
         // allow movement when input detected and not crouching
         if (input.magnitude > 0.001 && !animController.GetBool ("Crouch"))
@@ -120,6 +138,7 @@ public class PlayerController : MonoBehaviour
              shootPoint.position,
              shootPoint.rotation
         );
+        gunshot.Play();
         // starts counter for time after shot, to be used for turning off fight music
         lastShotTime = Time.time;   
 
