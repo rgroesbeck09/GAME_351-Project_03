@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour
         animController.SetInteger("kickType", randomKick);
         animController.SetTrigger("kick");
 
-        applyKickForce();
+        Invoke("applyKickForce", .25f);
     }
     
     // applies kick force when kicking objects
