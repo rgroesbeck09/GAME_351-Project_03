@@ -6,6 +6,7 @@ public class BanditScript : MonoBehaviour
 {
     // Public Vars
     public Animator animator;
+    public AudioSource deathSound;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +28,7 @@ public class BanditScript : MonoBehaviour
      */
     public void Die()
     {
+        deathSound.Play();
         animator.SetTrigger("Die");
     }
 }
