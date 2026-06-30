@@ -79,7 +79,6 @@ public class PlayerController : MonoBehaviour
                 animController.SetBool("Crouch", false);
         }
 
-
     }
 
     // kick function, selects at random one of 3 kick animations

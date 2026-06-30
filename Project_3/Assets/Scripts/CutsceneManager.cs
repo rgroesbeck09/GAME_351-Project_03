@@ -9,26 +9,27 @@ public class CutsceneManager : MonoBehaviour
     private bool cutsceneEnded = false;
 
     void Start()
-    {
-        playerController.canMove = false;
-
-        director.Play();
+    {  
         director.stopped += OnCutsceneFinished;
     }
 
     void Update()
     {
-        if (!cutsceneEnded && Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             director.Stop();
         }
     }
 
-    void OnCutsceneFinished(PlayableDirector pd)
+    public void startCutscene()
     {
-        if (cutsceneEnded) return;
+        playerController.canMove = false;
+        director.Play();
+    }
 
-        cutsceneEnded = true;
+
+    public void OnCutsceneFinished(PlayableDirector pd)
+    {
         playerController.canMove = true;
     }
 }
